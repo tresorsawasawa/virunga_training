@@ -7,6 +7,7 @@
             <field name="Selling Price">3000</field>
             <field name="Number of bedrooms">3</field>
             <field name="Living Area">4</field>
+            <field name="Active">True</field>
         </record>
     </data>
 </odoo>
