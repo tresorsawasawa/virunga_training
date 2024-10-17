@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <record id="house_1" model="estate.property">
+            <field name="name">Property Name</field>
+            <field name="description">Lorem ipsum alwt ipsur.</field>
+            <field name="Expected Price">1000</field>
+            <field name="Selling Price">3000</field>
+            <field name="Number of bedrooms">3</field>
+            <field name="Living Area">4</field>
+        </record>
+    </data>
+</odoo>
