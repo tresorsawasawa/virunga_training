@@ -7,5 +7,6 @@
     "category": "Test",
     "depends": ["base"],
     "data": [],
+    "demo": ['demo/demo.xml'],
     "application": True,
 }
