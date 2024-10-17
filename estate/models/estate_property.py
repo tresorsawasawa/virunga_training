@@ -7,6 +7,8 @@ class EstateProperty(models.Model):
     name = fields.Char(string="Property Name", required=True)
     description = fields.Text(string="Description")
     expected_price = fields.Float(string="Expected Price", required=True)
-    selling_price = fields.Float(string="Selling Price", readonly=True)
+    selling_price = fields.Float(string="Selling Price")
     bedrooms = fields.Integer(string="Number of Bedrooms", default=1)
     living_area = fields.Float(string="Living Area (sqm)")
+    active = fields.Boolean(string="Active", default=True)
+    
