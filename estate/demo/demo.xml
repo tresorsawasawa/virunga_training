@@ -5,10 +5,10 @@
             <field name="description">Lorem ipsum alwt ipsur.</field>
             <field name="postcode">odoo17</field>
             <field name="date_availability">23/10/2024</field>
-            <field name="Expected Price">1000</field>
-            <field name="Selling Price">3000</field>
-            <field name="Number of bedrooms">3</field>
-            <field name="Living Area">4</field>
+            <field name="expected_price">1000</field>
+            <field name="selling_price">3000</field>
+            <field name="bedrooms">3</field>
+            <field name="living_">4</field>
             <field name="facedes">4</field>
         </record>
     </data>

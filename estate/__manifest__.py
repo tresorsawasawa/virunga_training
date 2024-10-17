@@ -6,7 +6,9 @@
     "author": "Tresor Sawasawa",
     "category": "Test",
     "depends": ["base"],
-    "data": [],
-    "demo": ['demo/demo.xml'],
+    "data": [
+        "security/res_groups.xml",
+    ],
+    "demo": ["demo/demo.xml"],
     "application": True,
 }
