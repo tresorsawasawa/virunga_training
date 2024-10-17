@@ -9,7 +9,11 @@
             <field name="selling_price">3000</field>
             <field name="bedrooms">3</field>
             <field name="living_">4</field>
-            <field name="facedes">4</field>
+            <field name="facades">4</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">4</field>
+            <field name="garden_orientation" position="inside"/>
         </record>
     </data>
 </odoo>
