@@ -4,11 +4,13 @@ class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real Estate Property"
 
-    name = fields.Char(string="Property Name", required=True)
-    description = fields.Text(string="Description")
-    expected_price = fields.Float(string="Expected Price", required=True)
-    selling_price = fields.Float(string="Selling Price")
-    bedrooms = fields.Integer(string="Number of Bedrooms", default=1)
-    living_area = fields.Float(string="Living Area (sqm)")
-    active = fields.Boolean(string="Active", default=True)
+    name = fields.Char(default="House", required=True)
+    description = fields.Text()
+    postcode = fields.Char()
+    date_availability = fields.Date()
+    expected_price = fields.Float()
+    selling_price = fields.Float()
+    bedrooms = fields.Integer()
+    living_area = fields.Integer()
+    facedes = fields.Integer()
     
