@@ -2,7 +2,9 @@
 <odoo>
     <data>
         <record id="house_1" model="estate.property">
+            <field name="state">New</field>
             <field name="name">Property Name</field>
+            <field name="active">True</field>
             <field name="description">Lorem ipsum alwt ipsur.</field>
             <field name="postcode">odoo17</field>
             <field name="date_availability">23/10/2024</field>
@@ -15,7 +17,6 @@
             <field name="garden">True</field>
             <field name="garden_area">4</field>
             <field name="garden_orientation" position="inside"/>
-            <field name="active">True</field>
         </record>
     </data>
 </odoo>
