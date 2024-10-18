@@ -2,20 +2,20 @@
 <odoo>
     <data>
         <record id="house_1" model="estate.property">
-            <field name="state"/>
-            <field name="name" />
-            <field name="active"/>
-            <field name="description" />
-            <field name="postcode" />
-            <field name="date_availability" />
-            <field name="expected_price" />
-            <field name="selling_price"/>
-            <field name="bedrooms" />
-            <field name="living_area"/>
-            <field name="facades" />
-            <field name="garage" />
-            <field name="garden" />
-            <field name="garden_area" />
+            <field name="state">New</field>
+            <field name="name">Property Name</field>
+            <field name="active">True</field>
+            <field name="description">Lorem ipsum alwt ipsur.</field>
+            <field name="postcode">odoo17</field>
+            <field name="date_availability">23/10/2024</field>
+            <field name="expected_price">1000</field>
+            <field name="selling_price">3000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">4</field>
+            <field name="facades">4</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">4</field>
             <field name="garden_orientation" position="inside"/>
         </record>
     </data>
