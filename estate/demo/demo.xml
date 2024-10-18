@@ -8,13 +8,14 @@
             <field name="date_availability">23/10/2024</field>
             <field name="expected_price">1000</field>
             <field name="selling_price">3000</field>
-            <field name="bedrooms">3</field>
-            <field name="living_">4</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">4</field>
             <field name="facades">4</field>
             <field name="garage">True</field>
             <field name="garden">True</field>
             <field name="garden_area">4</field>
             <field name="garden_orientation" position="inside"/>
+            <field name="active">True</field>
         </record>
     </data>
 </odoo>
