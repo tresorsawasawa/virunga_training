@@ -1,6 +1,6 @@
 <odoo>
-    <menuitem id="root_level" name="Root">
-        <menuitem id="second_level" name="Estate">
+    <menuitem id="root_level" name="Real Estate Management">
+        <menuitem id="second_level" name="Property Listings">
             <menuitem id="third_level" name="Third" action="test_record" />
         </menuitem>
     </menuitem>
