@@ -1,7 +1,16 @@
 <odoo>
+    <record id="action_property_type" model="ir.actions.act_window">
+        <field name="name">Property Types</field>
+        <field name="res_model">estate.property.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     <menuitem id="root_level" name="Real Estate Management">
         <menuitem id="second_level" name="Property Listings">
             <menuitem id="third_level" name="Manage Properties" action="test_record" />
+        </menuitem>
+        <menuitem id="menu_estate_configuration" name="Settings">
+            <menuitem id="menu_estate_property_type" name="Property Types" action="action_property_type"/>
         </menuitem>
     </menuitem>
 </odoo>
