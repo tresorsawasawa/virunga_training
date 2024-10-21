@@ -13,6 +13,7 @@
         # Views
         "views/estate_property_views.xml",
         "views/estate_menus.xml",
+        "views/estate_property_offer_views.xml"
         # Menus
     ],
     "demo": ["demo/demo.xml"],
