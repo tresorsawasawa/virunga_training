@@ -60,7 +60,8 @@
                         <field name="garage" />
                         <field name="garden" />
                         <field name="garden_area" />
-                        <field name="total_area" readonly="1"/> 
+                        <field name="total_area" readonly="1"/>
+                        <field name="best_price" readonly="1"/>
                      </group>
                   </page>
 
