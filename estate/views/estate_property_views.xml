@@ -29,8 +29,8 @@
          <form>
             <header>
                <field name="state" widget="satusbar" />
-               <button string = "Sold" type = "object" name = "action_sold"/>
-               <button string = "Cancel" type = "object" name = "action_cancel"/>
+               <button name="action_set_sold" type="object" string="Sold" class="btn-primary"/>
+               <button name="action_set_cancel" type="object" string="Cancel" class="btn-secondary" />
             </header>
             <sheet>
                <div class="oe_title">
@@ -74,6 +74,8 @@
                         <tree editable="bottom">
                            <field name="price" />
                            <field name="partner_id" />
+                           <button string = '✔' type = "object"  name = "action_accept"/>
+                           <button string = '✖' type = "object"  name = "action_refuse"/>
                            <field name="status" />
                            <field name="property_type_id" />
                         </tree>
