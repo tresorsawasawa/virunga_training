@@ -3,10 +3,12 @@
         <field name="name">property.offer.tree</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree string = "Real Estate Property Offers" create = "true" edit = "true" delete = "true">
                 <field name="price"/>
                 <field name="partner_id"/>
                 <field name="status"/>
+                <field name="property_type_id"/>
+                <field name="property_id"/>
             </tree>
         </field>
     </record>
@@ -25,5 +27,11 @@
                 </sheet>
             </form>
         </field>
+    </record>
+
+    <record id = "offer_record" model = "ir.actions.act_window">
+        <field name = "name">Offers</field>
+        <field name = "res_model">estate.property.offer</field>
+        <field name = "view_mode">tree,form</field>
     </record>
 </odoo>
