@@ -51,7 +51,7 @@ class EstatePropertyOffer(models.Model):
             self.property_id.selling_price = 0.00
         self.status = "refused"
 
-    @api.constraints("price")
+    @api.constrains("price")
     def _check_price(self):
         for record in self:
             if record.price <= 0:
