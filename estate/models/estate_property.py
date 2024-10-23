@@ -1,6 +1,6 @@
 from odoo import models, fields, api
 from datetime import timedelta, date
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -89,3 +89,24 @@ class EstateProperty(models.Model):
             if property.state == 'sold':
                 raise UserError("A sold property cannot be canceled.")
             property.state = 'canceled'
+
+# Constraints
+
+    @api.constrains("selling_price")
+    def _check_selling_price(self):
+        for record in self:
+            if record.selling_price <= 0:
+                raise ValidationError("The selling price must be positive")
+            
+    @api.constrains("expected_price")
+    def _check_expected_price(self):
+        for record in self:
+            if record.expected_price <= 0:
+                raise ValidationError("The expected price must be positive")
+            
+    @api.constrains("selling_price", "expected_price")
+    def _check_selling_price_and_expected_price(self):
+        for record in self:
+            if record.selling_price < record.expected_price:
+                raise ValidationError("The selling price cannot be less than the expected price")
+
