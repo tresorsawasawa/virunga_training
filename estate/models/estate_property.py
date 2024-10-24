@@ -76,6 +76,7 @@ class EstateProperty(models.Model):
 
     @api.onchange("garden")
     def _onchange_garden(self):
+            self.ensure_one()
             if not self.garden:
                 self.garden_area = 0
                 self.garden_orientation = ""
@@ -91,10 +92,10 @@ class EstateProperty(models.Model):
             }
 
     def action_set_sold(self):
-        for property in self:
-            if property.state == "canceled":
+            self.ensure_one()
+            if self.state == "canceled":
                 raise UserError("A canceled property cannot be sold.")
-            property.state = "sold"
+            self.state = "sold"
 
     def action_set_cancel(self):
         for property in self:
@@ -119,7 +120,8 @@ class EstateProperty(models.Model):
     @api.constrains("selling_price", "expected_price")
     def _check_selling_price_and_expected_price(self):
         for record in self:
-            if record.selling_price < record.expected_price:
-                raise ValidationError(
-                    "The selling price cannot be less than the expected price"
-                )
+            if record.selling_price > 0 and record.expected_price > 0:
+                if record.selling_price < record.expected_price:
+                    raise ValidationError(
+                        "The selling price cannot be less than the expected price"
+                    )
