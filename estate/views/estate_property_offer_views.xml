@@ -4,14 +4,16 @@
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
             <tree string="Real Estate Property Offers" create="true" edit="true" delete="true">
-                <field name="property_id"/>
-                <field name="partner_id"/>
-                <field name="price"/>
-                <button string = '✔' type = "object"  name = "action_accept"/>
-                <button string = '✖' type = "object"  name = "action_refuse"/>
-                <field name="status"/>
-                <field name="validity"/>
-                <field name="date_deadline"/>
+                <field name="property_id" />
+                <field name="partner_id" />
+                <field name="price" />
+                <button string='✔' type="object" name="action_accept"
+                    invisible="status in ('accepted', 'refused')" />
+                <button string='✖' type="object" name="action_refuse"
+                    invisible="status in ('accepted', 'refused')" />
+                <field name="status" />
+                <field name="validity" />
+                <field name="date_deadline" />
             </tree>
         </field>
     </record>
@@ -23,12 +25,12 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="property_id"/>
-                        <field name="partner_id"/>
-                        <field name="price"/>
-                        <field name="status"/>
-                        <field name="validity"/>
-                        <field name="date_deadline"/>
+                        <field name="property_id" />
+                        <field name="partner_id" />
+                        <field name="price" />
+                        <field name="status" />
+                        <field name="validity" />
+                        <field name="date_deadline" />
                     </group>
                 </sheet>
             </form>
