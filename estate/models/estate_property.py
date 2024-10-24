@@ -76,10 +76,9 @@ class EstateProperty(models.Model):
 
     @api.onchange("garden")
     def _onchange_garden(self):
-        for estate in self:
-            if not estate.garden:
-                estate.garden_area = 0
-                estate.garden_orientation = ""
+            if not self.garden:
+                self.garden_area = 0
+                self.garden_orientation = ""
 
     @api.onchange("date_availability")
     def _onchange_date_availability(self):
