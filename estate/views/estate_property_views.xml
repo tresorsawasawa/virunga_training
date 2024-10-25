@@ -60,15 +60,18 @@
                         <field name="garage" />
                         <field name="garden" />
                         <field name="garden_area" />
+                        <field name="total_area" readonly="1"/>
+                        <field name="best_price" readonly="1"/>
                      </group>
                   </page>
 
                   <page string="Offers">
                      <field name="offer_ids">
-                         <tree>
+                         <tree editable="bottom">
                              <field name="price"/>
                              <field name="partner_id"/>
                              <field name="status"/>
+                             <field name="property_type_id"/>
                          </tree>
                      </field>
                  </page>
@@ -102,9 +105,9 @@
       </field>
    </record>
 
-   <record id="test_record" model="ir.actions.act_window">
+  <record id="test_record" model="ir.actions.act_window">
       <field name="name">Real Estate</field>
       <field name="res_model">estate.property</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">kanban,tree,form</field>
    </record>
 </odoo>

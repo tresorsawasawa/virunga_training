@@ -11,9 +11,10 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="root_level" name="Real Estate Management">
-        <menuitem id="second_level" name="Property Listings">
-            <menuitem id="third_level" name="Manage Properties" action="test_record" />
+    <menuitem id="root_level" name="Real Estate">
+        <menuitem id="second_level" name="Advertisement">
+            <menuitem id="third_level" name="Properties" action="test_record" />
+            <menuitem id = "Property_type" name = "Property Type" action = "offer_record"/>
         </menuitem>
         <menuitem id="menu_estate_configuration" name="Settings">
             <menuitem id="menu_estate_property_type" name="Property Types" action="action_property_type"/>
