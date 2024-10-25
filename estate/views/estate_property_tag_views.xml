@@ -3,8 +3,14 @@
         <field name="name">estate.property.tag.view.tree</field>
         <field name="model">estate.property.tag</field>
         <field name="arch" type="xml">
+<<<<<<< HEAD
             <tree editable="bottom">
                 <field name="name" />
+=======
+            <tree>
+                <field name="name"/>
+                <field name="color" widget="color_picker" options="{'color_field':'color'}" />
+>>>>>>> f1a3c8f80f0cbc7912bc6059c18d0722c4885941
             </tree>
         </field>
     </record>
@@ -16,7 +22,12 @@
             <form>
                 <sheet>
                     <group>
+<<<<<<< HEAD
                         <field name="name" />
+=======
+                        <field name="name"/>
+                        <field name="color" widget="color_picker" options="{'color_field':'color'}" />
+>>>>>>> f1a3c8f80f0cbc7912bc6059c18d0722c4885941
                     </group>
                 </sheet>
             </form>

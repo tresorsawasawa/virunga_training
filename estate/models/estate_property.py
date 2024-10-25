@@ -69,18 +69,16 @@ class EstateProperty(models.Model):
     def _compute_best_price(self):
         for property in self:
             if property.offer_ids:
-                property.best_price = max(
-                    property.offer_ids.mapped("price"), default=0.0
-                )
+                property.best_price = max(property.offer_ids.mapped("price"))
             else:
                 property.best_price = 0.0
 
     @api.onchange("garden")
     def _onchange_garden(self):
-        for estate in self:
-            if not estate.garden:
-                estate.garden_area = 0
-                estate.garden_orientation = ""
+        self.ensure_one()
+        if not self.garden:
+            self.garden_area = 0
+            self.garden_orientation = ""
 
     @api.onchange("date_availability")
     def _onchange_date_availability(self):
@@ -93,16 +91,16 @@ class EstateProperty(models.Model):
             }
 
     def action_set_sold(self):
-        for property in self:
-            if property.state == "canceled":
-                raise UserError("A canceled property cannot be sold.")
-            property.state = "sold"
+        self.ensure_one()
+        if self.state == "canceled":
+            raise UserError("A canceled property cannot be sold.")
+        self.state = "sold"
 
     def action_set_cancel(self):
-        for property in self:
-            if property.state == "sold":
-                raise UserError("A sold property cannot be canceled.")
-            property.state = "canceled"
+        self.ensure_one()
+        if property.state == "sold":
+            raise UserError("A sold property cannot be canceled.")
+        property.state = "canceled"
 
     # Constrains
 
@@ -123,10 +121,14 @@ class EstateProperty(models.Model):
         for record in self:
             if record.selling_price > 0 and record.selling_price > 0:
                 if record.selling_price < (0.9 * record.expected_price):
-                    raise ValidationError("The selling price cannot be less than 90% of the expected price.")
+                    raise ValidationError(
+                        "The selling price cannot be less than 90% of the expected price."
+                    )
 
     @api.ondelete(at_uninstall=False)
     def _check_state_before_delete(self):
         for record in self:
-            if record.state not in ['new', 'canceled']:
-                raise UserError("Cannot delete properties that are not in 'New' or 'Canceled' state.")
+            if record.state not in ["new", "canceled"]:
+                raise UserError(
+                    "Cannot delete properties that are not in 'New' or 'Canceled' state."
+                )
