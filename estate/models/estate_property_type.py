@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-
+from odoo.exceptions import UserError
 
 class EstatePropertyType(models.Model):
     _name="estate.property.type"
@@ -31,3 +31,4 @@ class EstatePropertyType(models.Model):
                 "default_property_type_id" : self.id
             }
         }
+
