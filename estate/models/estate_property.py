@@ -59,3 +59,20 @@ class EstateProperty(models.Model):
                 property.best_price = max(property.offer_ids.mapped('price'), default=0.0)
             else:
                 property.best_price = 0.0
+
+    @api.onchange('garden')
+    def _onchange_garden(self):
+        for estate in self:
+            if not estate.garden:
+                estate.garden_area = 0
+                estate.garden_orientation = ''
+
+    @api.onchange('date_availability')
+    def _onchange_date_availability(self):
+        if self.date_availability and self.date_availability < date.today():
+            return {
+                'warning': {
+                    'title': 'Invalid Date',
+                    'message': 'The availability date cannot be in the past.'
+                }
+            }
