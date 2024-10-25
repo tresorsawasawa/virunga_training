@@ -6,6 +6,7 @@ from odoo.exceptions import UserError, ValidationError
 class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real Estate Property"
+    _order = "id desc"
 
     name = fields.Char(string="Property Name", required=True)
     description = fields.Text(string="Description")
@@ -68,17 +69,17 @@ class EstateProperty(models.Model):
         for property in self:
             if property.offer_ids:
                 property.best_price = max(
-                    property.offer_ids.mapped("price"), default=0.0
+                    property.offer_ids.mapped("price")
                 )
             else:
                 property.best_price = 0.0
 
     @api.onchange("garden")
     def _onchange_garden(self):
-        for estate in self:
-            if not estate.garden:
-                estate.garden_area = 0
-                estate.garden_orientation = ""
+            self.ensure_one()
+            if not self.garden:
+                self.garden_area = 0
+                self.garden_orientation = ""
 
     @api.onchange("date_availability")
     def _onchange_date_availability(self):
@@ -91,16 +92,16 @@ class EstateProperty(models.Model):
             }
 
     def action_set_sold(self):
-        for property in self:
-            if property.state == "canceled":
+            self.ensure_one()
+            if self.state == "canceled":
                 raise UserError("A canceled property cannot be sold.")
-            property.state = "sold"
+            self.state = "sold"
 
     def action_set_cancel(self):
-        for property in self:
-            if property.state == "sold":
-                raise UserError("A sold property cannot be canceled.")
-            property.state = "canceled"
+        self.ensure_one()
+        if property.state == "sold":
+            raise UserError("A sold property cannot be canceled.")
+        property.state = "canceled"
 
     # Constrains
 
@@ -119,7 +120,8 @@ class EstateProperty(models.Model):
     @api.constrains("selling_price", "expected_price")
     def _check_selling_price_and_expected_price(self):
         for record in self:
-            if record.selling_price < record.expected_price:
-                raise ValidationError(
-                    "The selling price cannot be less than the expected price"
-                )
+            if record.selling_price > 0 and record.expected_price > 0:
+                if record.selling_price < record.expected_price:
+                    raise ValidationError(
+                        "The selling price cannot be less than the expected price"
+                    )
