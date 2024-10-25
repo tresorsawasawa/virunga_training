@@ -9,10 +9,3 @@ class EstatePropertyTag(models.Model):
 
     name = fields.Char(string='Name', required=True)
     color = fields.Integer()
-
-# Feature to pick random color
-    @api.model
-    def create(self, vals):
-        if 'color' not in vals:
-            vals['color'] = random.randint(1, 11)
-        return super(EstatePropertyTag, self).create(vals)
