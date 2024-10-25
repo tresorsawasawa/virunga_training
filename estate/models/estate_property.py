@@ -98,10 +98,10 @@ class EstateProperty(models.Model):
             self.state = "sold"
 
     def action_set_cancel(self):
-        for property in self:
-            if property.state == "sold":
-                raise UserError("A sold property cannot be canceled.")
-            property.state = "canceled"
+        self.ensure_one()
+        if property.state == "sold":
+            raise UserError("A sold property cannot be canceled.")
+        property.state = "canceled"
 
     # Constrains
 
