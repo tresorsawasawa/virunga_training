@@ -31,4 +31,3 @@ class EstatePropertyType(models.Model):
                 "default_property_type_id" : self.id
             }
         }
-

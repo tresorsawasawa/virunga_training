@@ -5,7 +5,7 @@
     "license": "OEEL-1",
     "author": "Tresor Sawasawa",
     "category": "Test",
-    "depends": ["base"],
+    "depends": ["base", "mail"],
     "data": [
         # Security
         "security/res_groups.xml",
@@ -21,5 +21,6 @@
     "demo": ["demo/demo.xml"],
     "views": ["estate_property_views.xml"],
     "application": True,
+    "installable": True
 }
 
