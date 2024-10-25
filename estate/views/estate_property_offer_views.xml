@@ -14,12 +14,13 @@
                 <field name="status" />
                 <field name="validity" />
                 <field name="date_deadline" />
+                <field name="property_type_id"/>
             </tree>
         </field>
     </record>
 
-    <record id="view_property_offer_form" model="ir.ui.view">
-        <field name="name">property.offer.form</field>
+    <record id="estate_property_offer_form_view" model="ir.ui.view">
+        <field name="name">estate.property.offer.view.form</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
             <form>

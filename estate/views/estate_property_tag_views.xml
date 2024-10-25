@@ -1,22 +1,22 @@
 <odoo>
-    <record id="view_property_tag_tree" model="ir.ui.view">
-        <field name="name">property.tag.tree</field>
+    <record id="estate_property_tag_tree_view" model="ir.ui.view">
+        <field name="name">estate.property.tag.view.tree</field>
         <field name="model">estate.property.tag</field>
         <field name="arch" type="xml">
             <tree editable="bottom">
-                <field name="name"/>
+                <field name="name" />
             </tree>
         </field>
     </record>
 
-    <record id="view_property_tag_form" model="ir.ui.view">
-        <field name="name">property.tag.form</field>
+    <record id="estate_property_tag_form_view" model="ir.ui.view">
+        <field name="name">estate.property.tag.view.form</field>
         <field name="model">estate.property.tag</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
-                        <field name="name"/>
+                        <field name="name" />
                     </group>
                 </sheet>
             </form>
@@ -27,5 +27,6 @@
         <field name="name">Property Tags</field>
         <field name="res_model">estate.property.tag</field>
         <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="estate_property_tag_tree_view" />
     </record>
 </odoo>
