@@ -69,7 +69,7 @@ class EstateProperty(models.Model):
         for property in self:
             if property.offer_ids:
                 property.best_price = max(
-                    property.offer_ids.mapped("price"), default=0.0
+                    property.offer_ids.mapped("price")
                 )
             else:
                 property.best_price = 0.0
