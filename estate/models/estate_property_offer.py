@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 from datetime import timedelta, datetime
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
+
 
 class EstatePropertyOffer(models.Model):
     _name = "estate.property.offer"
@@ -49,3 +50,10 @@ class EstatePropertyOffer(models.Model):
         if self.property_id.selling_price == self.price :
             self.property_id.selling_price = 0.00
         self.status = "refused"
+
+    @api.constrains("price")
+    def _check_price(self):
+        for record in self:
+            if record.price <= 0:
+                raise ValidationError("The price must be strictly positive")
+    
