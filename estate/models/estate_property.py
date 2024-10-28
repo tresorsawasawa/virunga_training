@@ -5,6 +5,7 @@ from odoo.exceptions import UserError, ValidationError
 
 class EstateProperty(models.Model):
     _name = "estate.property"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Real Estate Property"
     _order = "id desc"
 
@@ -68,18 +69,16 @@ class EstateProperty(models.Model):
     def _compute_best_price(self):
         for property in self:
             if property.offer_ids:
-                property.best_price = max(
-                    property.offer_ids.mapped("price")
-                )
+                property.best_price = max(property.offer_ids.mapped("price"))
             else:
                 property.best_price = 0.0
 
     @api.onchange("garden")
     def _onchange_garden(self):
-            self.ensure_one()
-            if not self.garden:
-                self.garden_area = 0
-                self.garden_orientation = ""
+        self.ensure_one()
+        if not self.garden:
+            self.garden_area = 0
+            self.garden_orientation = ""
 
     @api.onchange("date_availability")
     def _onchange_date_availability(self):
@@ -92,10 +91,10 @@ class EstateProperty(models.Model):
             }
 
     def action_set_sold(self):
-            self.ensure_one()
-            if self.state == "canceled":
-                raise UserError("A canceled property cannot be sold.")
-            self.state = "sold"
+        self.ensure_one()
+        if self.state == "canceled":
+            raise UserError("A canceled property cannot be sold.")
+        self.state = "sold"
 
     def action_set_cancel(self):
         self.ensure_one()
@@ -118,10 +117,18 @@ class EstateProperty(models.Model):
                 raise ValidationError("The expected price must be positive")
 
     @api.constrains("selling_price", "expected_price")
-    def _check_selling_price_and_expected_price(self):
+    def _check_price_constraints(self):
         for record in self:
-            if record.selling_price > 0 and record.expected_price > 0:
-                if record.selling_price < record.expected_price:
+            if record.selling_price > 0 and record.selling_price > 0:
+                if record.selling_price < (0.9 * record.expected_price):
                     raise ValidationError(
-                        "The selling price cannot be less than the expected price"
+                        "The selling price cannot be less than 90% of the expected price."
                     )
+
+    @api.ondelete(at_uninstall=False)
+    def _check_state_before_delete(self):
+        for record in self:
+            if record.state not in ["new", "canceled"]:
+                raise UserError(
+                    "Cannot delete properties that are not in 'New' or 'Canceled' state."
+                )

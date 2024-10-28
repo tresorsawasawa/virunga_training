@@ -2,11 +2,11 @@
     <menuitem id="root_level" name="Real Estate">
         <menuitem id="second_level" name="Advertisement">
             <menuitem id="third_level" name="Properties" action="test_record" />
-            <menuitem id = "Property_type" name = "Property Type" action = "offer_record"/>
+            <menuitem id = "Property_type" name = "Offers Listing" action = "offer_record"/>
         </menuitem>
         <menuitem id="menu_estate_configuration" name="Settings">
-            <menuitem id="menu_estate_property_type" name="Property Types" action="action_property_type"/>
-            <menuitem id="menu_estate_property_tag" name="Property Tags" action="action_property_tag"/>
+            <menuitem id="menu_estate_property_type" name="Property Types" action="estate.action_property_type"/>
+            <menuitem id="menu_estate_property_tag" name="Property Tags" action="estate.action_property_tag"/>
         </menuitem>
     </menuitem>
 </odoo>
