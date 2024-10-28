@@ -93,7 +93,7 @@
                               invisible="status in ('accepted', 'refused')" />
                            <button string='✖' type="object" name="action_refuse"
                               invisible="status in ('accepted', 'refused')" />
-                           <field name="status"  optional="False" />
+                           <field name="status"  optional="hide" />
                         </tree>
                      </field>
                   </page>
