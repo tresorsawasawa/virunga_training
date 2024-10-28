@@ -65,9 +65,9 @@ class EstatePropertyOffer(models.Model):
 
         property.state = "offer_received"
 
-        existing_offers = self.search([("property_id", "=", property_id)])
+        existing_offers = property.offer_ids
         for offer in existing_offers:
             if vals.get("price") < offer.price:
                 raise UserError("Cannot create an offer lower than an existing offer.")
             
-        return super(EstatePropertyOffer, self).create(vals)
+        return super().create(vals)
